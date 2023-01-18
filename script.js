@@ -1,5 +1,3 @@
-const options = ["rock", "paper", "scissors"]
-
 function getComputerChoice() {  // [COMPUTER INPUT]
     let computer = Math.floor(Math.random() * getComputerChoice.length) + 1
 
@@ -61,7 +59,7 @@ function checkResult(playerInput, computerInput) {  // [CHECKS GAME RESULT]
 
 }
 
-function playRound() {
+function playRound() {  // [PLAYS THE ROUND]
     const playerChoice = playerSelection();
     console.log(playerChoice);
 
@@ -71,3 +69,11 @@ function playRound() {
     const winner = checkResult(playerChoice, computerChoice);
     console.log(winner);
 }
+
+function game() {   // [FIRST TO 5 GAME]
+    for (let i = 0; i < 5; i++) {
+        playRound();
+     }
+}
+
+game();
