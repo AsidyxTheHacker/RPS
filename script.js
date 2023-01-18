@@ -1,5 +1,7 @@
+const choices = ["rock", "paper", "scissors"]
+
 function getComputerChoice() {  // [COMPUTER INPUT]
-    let computer = Math.floor(Math.random() * getComputerChoice.length) + 1
+    let computer = Math.floor(Math.random() * choices.length) + 1
 
     if (computer === 1){
         return "rock";
@@ -23,8 +25,7 @@ function checkResult(playerInput, computerInput) {  // [CHECKS GAME RESULT]
     if (playerInput === computerInput) {
         return "The result is a draw!";
     }
-
-    else if (playerInput === "rock") {
+     else if (playerInput === "rock") {
         if (computerInput === "paper") {
             return "You LOSE! (paper beats rock.)";
         }
@@ -34,8 +35,7 @@ function checkResult(playerInput, computerInput) {  // [CHECKS GAME RESULT]
             }
         }
     }
-
-    else if (playerInput === "paper") {
+     else if (playerInput === "paper") {
         if (computerInput === "rock") {
             return "You WIN! (paper beats rock.)";
         }
@@ -45,8 +45,7 @@ function checkResult(playerInput, computerInput) {  // [CHECKS GAME RESULT]
             }
         } 
     }
-
-    else if (playerInput === "scissors") {
+     else if (playerInput === "scissors") {
         if (computerInput === "rock") {
             return "You LOSE! (rocks beats scissors.)"
         }
