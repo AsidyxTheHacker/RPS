@@ -45,8 +45,7 @@ function checkResult(playerInput, computerInput) {  // [CHECKS GAME RESULT]
             if(computerSelection === "scissors") {
                 return "You LOSE! (scissors beats paper.)";
             }
-        }
-            
+        } 
     }
 
     else if (playerInput === "scissors") {
@@ -58,7 +57,17 @@ function checkResult(playerInput, computerInput) {  // [CHECKS GAME RESULT]
                 return "You WIN! (scissors beats paper)";
             }
         }
-            
     }
-  
+
+}
+
+function playRound() {
+    const playerChoice = playerSelection();
+    console.log(playerChoice);
+
+    const computerChoice = getComputerChoice();
+    console.log(computerChoice);
+
+    const winner = checkResult(playerChoice, computerChoice);
+    console.log(winner);
 }
