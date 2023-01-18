@@ -14,4 +14,8 @@ function getComputerChoice() {
     }
 }
 
-console.log(getComputerChoice());
+function playerSelection() {
+    let input = prompt("Enter Rock, Paper or Scissors.");
+    input = input.toLowerCase();
+    return input;
+}
