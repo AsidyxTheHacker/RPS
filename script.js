@@ -1,6 +1,6 @@
 const options = ["rock", "paper", "scissors"]
 
-function getComputerChoice() {
+function getComputerChoice() {  // [COMPUTER INPUT]
     let computer = Math.floor(Math.random() * getComputerChoice.length) + 1
 
     if (computer === 1){
@@ -14,8 +14,51 @@ function getComputerChoice() {
     }
 }
 
-function playerSelection() {
+function playerSelection() {    // [PLAYER INPUT]
     let input = prompt("Enter Rock, Paper or Scissors.");
     input = input.toLowerCase();
     return input;
+}
+
+function checkResult(playerInput, computerInput) {  // [CHECKS GAME RESULT]
+
+    if (playerInput === computerInput) {
+        return "The result is a draw!";
+    }
+
+    else if (playerInput === "rock") {
+        if (computerInput === "paper") {
+            return "You LOSE! (paper beats rock.)";
+        }
+        else {
+            if(computerInput === "scissors") {
+                return "You WIN! (rock beats scissors.)";
+            }
+        }
+    }
+
+    else if (playerInput === "paper") {
+        if (computerInput === "rock") {
+            return "You WIN! (paper beats rock.)";
+        }
+        else {
+            if(computerSelection === "scissors") {
+                return "You LOSE! (scissors beats paper.)";
+            }
+        }
+            
+    }
+
+    else if (playerInput === "scissors") {
+        if (computerInput === "rock") {
+            return "You LOSE! (rocks beats scissors.)"
+        }
+        else {
+            if(computerInput === "paper") {
+                return "You WIN! (scissors beats paper)";
+            }
+        }
+            
+    }
+  
 }
