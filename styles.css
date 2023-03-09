@@ -1,17 +1,122 @@
 body {
-    background-color: rgb(50, 50, 50);
+    background-image: linear-gradient(rgb(41, 41, 41), rgb(22, 22, 22));
+    background-attachment:fixed;
     color: white;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
 }
 
 h1 {
     font-size: 72px;
     font-weight: bold;
+    text-shadow: -3px -3px 3px black;
     text-decoration: underline;
+    margin: 40px 0 40px 0;
 }
 
-h2 {
-    font-size: 36px;
+#gameboard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:50px;
+    width: 670px;
+    padding: 10px;
+    margin: auto;
+}
+
+.scorecard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#scoretag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    background-color: rgb(78, 78, 78);
+    font-weight: bold;
+    border: black solid 5px;
+    width:320px;
+    margin: 20px;
+    box-shadow: black -5px -5px 0;
+}
+
+#score1, #score2 {
+    padding:5px 10px 5px 10px;
+    text-decoration: underline;
+    font-size: 54px;
+}
+
+#result {
+    font-size: 72px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 10px 0 50px 0;
+}
+
+#again {
+    font-size: 30px;
     font-style: italic;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+button {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    border: rgb(62, 95, 106) solid 2px;
+    border-radius: 8px;
+    background-color: rgb(93, 143, 160);
+    box-shadow: -4px -4px 0 rgb(62, 95, 106);
+    text-shadow: 2px 2px 0 black;
+    transition: all .2s ease-in-out;
+    padding:10px;
+    min-width: 220px;
+    cursor: pointer;
+    transform:scale(1.1);
+}
+
+button:hover {
+    background-color: rgb(97, 165, 97);
+    box-shadow: 4px 4px 0 rgb(62, 106, 62);
+    border: rgb(62, 106, 62) solid 2px;
+    transform:scale(1.1);
+}
+
+#gameboard:hover button {
+    opacity: .5;
+}
+
+#gameboard button:hover {
+    opacity: 1;
+    filter: brightness(1.1)
+}
+
+#resetBtn {
+    font-size: 34px;
+    min-width: 130px;
+    padding: 5px;
+}
+
+#resetBtn:hover {
+    background-color: rgb(165, 97, 97);
+    box-shadow: 4px 4px 0 rgb(106, 62, 62);
+    border: rgb(106, 62, 62) solid 2px;
+}
+
+@keyframes spin {
+    0%{
+       transform: rotateY(0deg);
+    }
+    50%{
+        transform: rotateY(-90deg);
+    }
+    100%{
+        transform: rotateY(0deg);
+    }
 }

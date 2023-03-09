@@ -1,78 +1,85 @@
 const choices = ["rock", "paper", "scissors"]
+let userScore = 1;
+let compScore = 1;
+let playerChoice;
+let computerChoice;
+let result = document.getElementById('result');
 
 function getComputerChoice() {  // [COMPUTER INPUT]
-    let computer = Math.floor(Math.random() * choices.length) + 1
-
+    let computer = Math.floor(Math.random() * choices.length) + 1;
     if (computer === 1){
         return "rock";
-    }
-    if (computer === 2){
+    } if (computer === 2){
         return "paper";
-    }
-    if (computer === 3){
+    } if (computer === 3){
         return "scissors";
     }
 }
 
-function playerSelection() {    // [PLAYER INPUT]
-    let input = prompt("Enter Rock, Paper or Scissors.");
-    input = input.toLowerCase();
-    return input;
-}
-
 function checkResult(playerInput, computerInput) {  // [CHECKS GAME RESULT]
-
-    if (playerInput === computerInput) {
-        return "The result is a draw!";
-    }
-     else if (playerInput === "rock") {
-        if (computerInput === "paper") {
-            return "You LOSE! (paper beats rock.)";
-        }
-        else {
-            if(computerInput === "scissors") {
-                return "You WIN! (rock beats scissors.)";
-            }
-        }
-    }
-     else if (playerInput === "paper") {
-        if (computerInput === "rock") {
-            return "You WIN! (paper beats rock.)";
-        }
-        else {
-            if(computerSelection === "scissors") {
-                return "You LOSE! (scissors beats paper.)";
-            }
-        } 
-    }
-     else if (playerInput === "scissors") {
-        if (computerInput === "rock") {
-            return "You LOSE! (rocks beats scissors.)"
-        }
-        else {
-            if(computerInput === "paper") {
-                return "You WIN! (scissors beats paper)";
-            }
-        }
+        if (
+           (playerInput == "rock" && computerInput == "scissors") ||
+           (playerInput == "paper" && computerInput == "rock") ||
+           (playerInput == "scissors" && computerInput == "paper")
+        )
+         {  
+            document.getElementById("score1").innerText = (userScore);
+            userScore++;
+            declareWinner()
+            return "YOU WIN!";
+         } else if (playerInput == computerInput) {
+            return "DRAW!";
+         } else { 
+            document.getElementById("score2").innerText = (compScore);
+            compScore++;
+            declareWinner()
+            return "COMPUTER WINS!";
+         }
     }
 
+const rock = document.getElementById("rockBtn");
+    rock.addEventListener('click', function() {
+        playerChoice = "rock";
+        computerChoice = getComputerChoice();
+        const winner = checkResult(playerChoice, computerChoice);
+        document.getElementById("result").innerText = winner;
+    })
+
+const paper = document.getElementById("paperBtn");
+    paper.addEventListener('click', function() {
+        playerChoice = "paper";
+        computerChoice = getComputerChoice();
+        const winner = checkResult(playerChoice, computerChoice);
+        document.getElementById("result").innerText = winner;
+    })
+
+const scissors = document.getElementById("scissorsBtn");
+    scissors.addEventListener('click', function() {
+        playerChoice = "scissors";
+        computerChoice = getComputerChoice();
+        const winner = checkResult(playerChoice, computerChoice);
+        document.getElementById("result").innerText = winner;
+    })
+
+const reset = document.getElementById("resetBtn");
+    reset.addEventListener('click', function() {
+        location.reload();
+    })
+
+function declareWinner() {
+    if (userScore === 6) {
+        result.style.color = 'rgb(97, 165, 97)';
+        result.style.animation = 'spin 5s linear infinite'
+        document.getElementById('again').innerText = "Reset to play again";
+        document.getElementById('rockBtn').disabled = true
+        document.getElementById('paperBtn').disabled = true
+        document.getElementById('scissorsBtn').disabled = true
+    } else if (compScore === 6) {
+        result.style.color = 'rgb(165, 97, 97)';
+        result.style.animation = 'spin 5s linear infinite'
+        document.getElementById('again').innerText = "Reset to play again";
+        document.getElementById('rockBtn').disabled = true
+        document.getElementById('paperBtn').disabled = true
+        document.getElementById('scissorsBtn').disabled = true
+    } 
 }
-
-function playRound() {  // [PLAYS THE ROUND]
-    const playerChoice = playerSelection();
-    console.log(playerChoice);
-
-    const computerChoice = getComputerChoice();
-    console.log(computerChoice);
-
-    const winner = checkResult(playerChoice, computerChoice);
-    console.log(winner);
-}
-
-function game() {   // [FIRST TO 5 GAME]
-    for (let i = 0; i < 5; i++) {
-        playRound();
-     }
-}
-
-game();
